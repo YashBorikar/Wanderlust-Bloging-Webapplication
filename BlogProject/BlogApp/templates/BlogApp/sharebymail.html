@@ -1,0 +1,62 @@
+{%extends 'BlogApp/base.html'%}
+{%block content%}
+<div class="container">
+    {%if sent%}
+        <h1>Email Successfully Sent !!!</h1>
+        <p>"{{post.title}}" was sent by email</p>
+    {%else%}
+    <h1>Share <b>"{{post.title}}"</b> by Email</h1><br>
+        <div class="col-sm-8 email-form-content">
+            <form method="post">
+                {%csrf_token%}
+                <div class="col-sm-6 form-group">
+                    <label for="id_name">Name <span class="helptext" style="color:red;">*</span></label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required id="id_name">
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="id_email">Email <span class="helptext" style="color:red;">*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your Email" required id="id_email">
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="id_to">To <span class="helptext" style="color:red;">*</span></label>
+                    <input type="email" name="to" class="form-control" placeholder="Enter Receiver Email" required id="id_to">
+                    {% if form.to.errors %}
+                        {% for error in form.to.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="id_comments">Comments</label>
+                    <textarea name="comments" cols="40" rows="3" class="form-control" placeholder="Comments if any" id="id_comments"></textarea>
+                    {% if form.comments.errors %}
+                        {% for error in form.comments.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+
+                <input type="submit" name="" class='btn btn-lg btn-success' value="Send Mail">
+            </form>
+        </div>
+    {%endif %}
+</div>
+{%endblock content%}

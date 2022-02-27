@@ -1,0 +1,96 @@
+{% extends 'BlogApp/base.html'%}
+{%load blog_tags%}
+{%load static%}
+{%block content%}
+
+<div class="col-sm-4 right-navbar">
+    <div class="jumbotron" style="padding: 30px;">
+        <h4>Number of published posts upto today:  <b>{%total_posts%}</b></h4>
+        <h3 class="latest-post">Latest Posts</h3><hr>
+        <p>{% show_latest_posts 5 %}</p>
+    </div>
+</div>
+
+<div class='container content'>
+    <div class="col-sm-8"  align="center">
+        <h1>{{post.title}}</h1>
+        <p id='date'>Published on {{post.publish}} by {{post.author|title}}</p><br>
+        {{post.body|linebreaks}}
+        <br>
+        <a href="/{{post.id}}/share" class='btn btn-lg btn-primary'>Share Post By Email</a>
+    </div>
+    <div class="col-sm-8">
+        {% with comments.count as comments_count %}
+            <h2>{{comments_count}} Comment{{comments_count|pluralize}}</h2>
+        {% endwith%}
+
+        {%if comments %}
+        {%for comment in comments %}
+            <div class="form-content">
+                <p id='ch'> Comment {{forloop.counter}} by {{comment.name}} on {{comment.created}}</p>
+                <div class="cb">{{comment.body|linebreaks}}</div>
+            </div>
+        {%endfor%}
+        {%else%}
+            <p>There are no Comments Yet !!!</p>
+        {%endif%}
+    </div>
+
+    <div class="col-sm-8" style="margin-top: 50px;">
+        <div class="form-content">
+        <h3>Add new Comment</h3><hr><br>
+            {%if csubmit %}
+                <h3>Your Comment Added Succefully</h3>
+            {%else%}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form method="post">
+                {%csrf_token%}
+                <div class="col-sm-6 form-group">
+                    <label for="id_name">Name <span class="helptext" style="color:red;">*</span></label>
+                    <input type="text" name="name" maxlength="32" class="form-control" placeholder="Enter your name" required id="id_name">
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="id_email">Email <span class="helptext" style="color:red;">*</span></label>
+                    <input type="email" name="email" maxlength="254" class="form-control" placeholder="Enter your email" required id="id_email">
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="id_body">Comment <span class="helptext" style="color:red;">*</span></label>
+                    <textarea name="body" cols="40" rows="3" class="form-control" placeholder="Enter Comment" required id="id_body"></textarea>
+                    {% if form.body.errors %}
+                        {% for error in form.body.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                </div>
+                <button type="submit">Submit Comment</button>
+            </form>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
+

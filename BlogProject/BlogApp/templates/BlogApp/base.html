@@ -1,0 +1,90 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Blog</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+
+    <!-- Font Icons -->  
+    <script src="https://kit.fontawesome.com/ced9991468.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Styles -->
+    <link rel='stylesheet' href="{% static 'BlogApp/css/styles.css' %}">
+
+
+</head>
+<body>
+    <nav class='navbar navbar-default navstyle'>
+        <div class="container-fluid headercontainer">
+            <div class="navbar-header">
+               <a href="/" class="pull-left"><img src="{% static 'BlogApp/images/logo.png' %}"  id="logo-img" class="hidden-xs"></a>
+                <a href="/" class="pull-left"><img src="{% static 'BlogApp/images/logo-sm.png' %}"  id="logo-img-sm" class="hidden-sm hidden-md hidden-lg hidden-xl"></a>
+            </div>
+            <ul class='nav navbar-nav navbar-right pull-right'>
+                <li><a href="/">Home</a></li>
+                {% if request.user.is_active%}
+                <li><a href="/create-post/">Write new Blog</a></li>
+                <li><a>Hello, {{request.user.first_name}} {{request.user.last_name}}</a></li>
+                {%endif%}
+                <button class="openbtn" onclick="openNav()" style="margin-top: 30px;">☰</button>
+            </ul>
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-window-close"></i></a>
+                <div align="center" style="margin-right:20px;">
+                    <a href="#"><i class="fas fa-user-circle" style="font-size: 70px;"></i></a>
+                    {% if request.user.is_active%}
+                        <a>Hello<br> {{request.user.first_name}} {{request.user.last_name}}</a><br>
+                        <a>Write new Blog</a>
+                        <a href="/accounts/logout/"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    {%else%}
+                        <a>Hello, Guest</a>
+                        <a href="/accounts/login/" ><i class="fas fa-sign-in-alt"></i>&nbsp Login</a>
+                        <a href="/signup"><i class="fas fa-user-plus"></i>&nbsp Signup</a>
+                    {%endif%}
+                </div>
+                <div id="connect">
+                    <span>Connect me</span>
+                    <ul class="social-nav list-inline">
+                        <li><a href="https://www.linkedin.com/in/ysborikar2411/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://github.com/ysborikar2411/" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="https://www.facebook.com/yash.borikar.1/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/ysborikar2411/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> <!--//headercontainer-->
+    </nav> <!--//navbar-->
+    {%block content%}
+    {%endblock%}
+
+    <!-- ******FOOTER****** --> 
+    <footer>
+            <p>&copy; 2021 Yash Borikar. This Wanderlust Blog Website is created by Yash Borikar.</p>
+            <p>For any queries contact me on ysborikar2411@gmail.com</p>
+    </footer><!-- //footer -->
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "260px";
+  document.getElementById("main").style.marginLeft = "260px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script>
+</body>
+</html>

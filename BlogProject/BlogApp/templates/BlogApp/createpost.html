@@ -1,0 +1,72 @@
+{% extends 'BlogApp/base.html' %}
+{% block content %}
+<div class="container">
+    <h1 style="margin: 30px 0px 0px 25px;">Share your Blog on Wanderlust</h1><br><hr>
+    <div class="col-sm-8">
+        <form method="post">
+            {%csrf_token%}
+            <div class="col-sm-6 form-group">
+                <label for="id_title">Title <span class="helptext" style="color:red;">*</span></label>
+                <input type="text" name="title" maxlength="250" class="form-control" placeholder="Blog Title" required id="id_title">
+                {% if form.title.errors %}
+                    {% for error in form.title.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                {%endif%}
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="id_tags">Blog Tags <span class="helptext" style="color:red;">*</span></label>
+                <input type="text" name="tags" class="form-control" placeholder="Comma-separated list of Blog related tags" required id="id_tags"><span class="helptext">E.g. Spain, Costline, etc.</span>
+                {% if form.tags.errors %}
+                    {% for error in form.tags.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                {%endif%}
+            </div>
+            <div class="col-sm-12 form-group">
+                <label for="id_body">Blog Content <span class="helptext" style="color:red;">*</span></label>
+                <textarea name="body" cols="40" rows="10" class="form-control" placeholder="Drop your Blog Content here" required id="id_body"></textarea>
+                {% if form.title.errors %}
+                    {% for error in form.title.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                {%endif%}
+            </div>
+            <div class="col-sm-12 form-group">
+                <label for="id_publish">Publish Date <span class="helptext" style="color:red;">*</span></label>
+                <input type="datetime-local" name="publish" maxlength="250" class="form-control" required id="id_publish">
+                {% if form.publish.errors %}
+                    {% for error in form.publish.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                {%endif%}
+            </div>
+            <div class="col-sm-3 form-group">
+                <label for="id_status">Status</label>
+                <select name="status" id="id_status" class="form-control">
+                    <option value="1">Draft</option>
+                    <option value="2" selected>Published</option>
+                </select>
+                {% if form.status.errors %}
+                    {% for error in form.status.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                {%endif%}
+            </div>
+            <div class="col-sm-12" align="center">
+                <input type="submit" class="btn btn-lg btn-success" >
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

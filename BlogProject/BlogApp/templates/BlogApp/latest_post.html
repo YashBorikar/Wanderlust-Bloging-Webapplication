@@ -1,0 +1,7 @@
+<ul style="padding-left: 20px;">
+    {% for post in latest_posts %}
+        <li style="margin: 10px;">
+            <a href="{{post.get_absolute_url}}" style="text-decoration: none;">{{post.title}}</a>
+        </li>
+    {% endfor %}
+</ul>

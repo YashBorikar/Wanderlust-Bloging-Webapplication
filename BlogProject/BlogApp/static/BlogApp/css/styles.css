@@ -1,0 +1,229 @@
+/*====== Base and Header ======*/
+
+body {
+  font-family: 'Noto Serif KR', Lato;
+  font-size: 18px;
+}
+
+#logo-img {
+  width: 350px;
+  height: 70px;
+  margin: 20px 20px 20px 0;
+}
+
+#logo-img-sm {
+  width: 250px;
+  height: 50px;
+  margin: 20px 20px 20px 0;
+}
+
+#header-nav {
+  background-color: #f0f5f5;
+  border-radius: 0;
+  border: 0;
+}
+
+.navstyle{
+	margin: 0px;
+	border: 0px;
+}
+
+.headercontainer{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.headercontainer li a{
+    margin-top: 30px;
+    font-family: 'Cookie', Lato;
+	font-size: 30px;
+}
+
+/*====== Collapsible navbar ======*/
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  cursor:pointer;
+  top: 0;
+  right: 25px;
+  font-size: 20px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor:pointer;
+  background-color:  #d1e0e0;
+  color: #293d3d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.openbtn:hover {
+  background-color: #b3cccc;
+}
+
+#connect{
+  position: absolute;
+  bottom: 0px;
+  padding: 8px 8px 8px 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+}
+
+.social-nav a {
+  background: #b0b7bf;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  padding: 0px 0px 0px 0px;
+  transition: 0.3s;
+}
+
+.social-nav a:hover {
+  background: #434343;
+}
+
+.social-nav a .fa {
+  font-size:25px;
+}
+
+.social-index a {
+  background: #434343;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  padding: 7px 0px 0px 0px;
+  transition: 0.3s;
+}
+
+.social-index a:hover {
+  background: #b0b7bf ;
+}
+
+.social-index a .fa {
+  font-size:25px;
+}
+
+.projects{
+    font-size: 17px;
+    width:190px;
+    height: 55px;
+    background: white;
+    padding: 15px 20px 20px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px grey;
+}
+.projects:hover{
+    box-shadow: 0px 0px 5px #0066cc;
+}
+
+/*====== login page ======*/
+
+.login{
+    width:30%;
+}
+
+/*====== Right-Navbar ======*/
+
+.right-navbar{
+    float: right;
+    padding-top: 20px;
+    padding: 0px;
+    height: 100%;
+}
+
+.latest-post{
+    font-family: 'Cookie';
+    font-size: 40px;
+    margin-top: 30px;
+}
+
+/*====== Content ======*/
+
+.content{
+margin-top: 30px;
+margin-left: 30px;
+}
+
+#date{
+    color:black;
+    font-size:12px;
+    font-style: italic;
+}
+
+/*====== Content ======*/
+
+.form-content{
+    background: white;
+    margin-bottom: 10px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px grey;
+}
+
+.form-content:hover{
+    box-shadow: 0px 0px 5px #0066cc;
+}
+
+.email-form-content{
+    background: white;
+    margin-bottom: 10px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.email-form-content:hover{
+    box-shadow: 0px 0px 5px #0066cc;
+}
+
+/* ======= Footer ======= */
+footer {
+  background: #343a40;
+  color: #fff;
+  padding: 10px;
+  margin-left: 0px;
+  margin-top: 10em;
+}
+
+footer p{
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
